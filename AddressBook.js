@@ -115,3 +115,10 @@ for (let index = 0; index < AddressBookArr.length; index++) {
 console.log("\nContact Deleted...");
 console.log("After Deletion...");
 console.log(AddressBookArr.toString());
+
+//UC6 Ability to find number of contacts in the address book
+let countofContact = AddressBookArr.reduce(((countofContact) => {
+    countofContact = countofContact + 1;
+    return countofContact;
+}), 0);
+console.log("\nCount of Contact: " + countofContact);
