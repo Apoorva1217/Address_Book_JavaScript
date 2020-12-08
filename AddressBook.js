@@ -77,15 +77,14 @@ class AddressBook {
     }
 
     toString() {
-        return "\n  FirstName    : " + this.firstName
-            + "\n  LastName     : " + this.lastName
-            + "\n  Address      : " + this.address
-            + "\n  City         : " + this.city
-            + "\n  State        : " + this.state
-            + "\n  ZipCode      : " + this.zipCode
-            + "\n  PhoneNumber  : " + this.phoneNumber
-            + "\n  EmailID      : " + this.emailId + "\n" +
-            "/****************************************/";
+        return "\nFirstName: " + this.firstName
+            + ", LastName: " + this.lastName
+            + ", Address: " + this.address
+            + ", City: " + this.city
+            + ", State: " + this.state
+            + ", ZipCode: " + this.zipCode
+            + ", PhoneNumber: " + this.phoneNumber
+            + ", EmailID: " + this.emailId;
     }
 }
 
@@ -98,9 +97,21 @@ function AddContact(firstName, lastName, address, city, state, zipCode, phoneNum
 AddContact("Apoorva", "Rasal", "Kalwa", "Thane", "Maharashtra", 436278, 9876543212, "Appu1@gmail.com");
 AddContact("Shreya", "Shinde", "Ghansoli", "Navimumbai", "Maharashtra", 426345, 9089098789, "Shreya98@gmail.com");
 AddContact("Yash", "Kadam", "Bandra", "Mumbai", "Maharashtra", 456712, 9080908078, "Yash17@gmail.com");
+console.log("Contacts are Added...");
 console.log(AddressBookArr.toString());
 
 //UC4 Ability to find existing contact person using their name and edit it
 AddressBookArr.filter(addresBook => addresBook.firstName == "Apoorva" && addresBook.lastName == "Rasal")
     .forEach(addresBook => { addresBook.address = "Kharadi"; addresBook.city = "Pune"; addresBook.state = "Maharashtra" });
+console.log("\nEdited Contact...");
+console.log(AddressBookArr.toString());
+
+//UC5 Ability to find a person with name delete it from the array
+for (let index = 0; index < AddressBookArr.length; index++) {
+    if (AddressBookArr[index].firstName == "Apoorva" && AddressBookArr[index].lastName == "Rasal") {
+        AddressBookArr.splice(index, 1);
+    }
+}
+console.log("\nContact Deleted...");
+console.log("After Deletion...");
 console.log(AddressBookArr.toString());
