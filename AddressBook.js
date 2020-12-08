@@ -89,10 +89,19 @@ class AddressBook {
 }
 
 //UC3 Ability to create a New Address Book array and add new Contacts to it
+//UC7 Ability to ensure there is noDuplicate Entry of the same Person in the Address Book
+
 let AddressBookArr = new Array();
 function AddContact(firstName, lastName, address, city, state, zipCode, phoneNumber, emailId) {
-    let addresBook = new AddressBook(firstName, lastName, address, city, state, zipCode, phoneNumber, emailId);
-    AddressBookArr.push(addresBook);
+    try {
+        let addresBook = new AddressBook(firstName, lastName, address, city, state, zipCode, phoneNumber, emailId);
+        if (AddressBookArr.find(contact => contact.firstName == addresBook.firstName && contact.lastName == addresBook.lastName)) {
+            throw "Duplicate entries are not allowed!";
+        }
+        else { AddressBookArr.push(addresBook); }
+    } catch (e) {
+        console.error(e);
+    }
 }
 AddContact("Apoorva", "Rasal", "Kalwa", "Thane", "Maharashtra", 436278, 9876543212, "Appu1@gmail.com");
 AddContact("Shreya", "Shinde", "Ghansoli", "Navimumbai", "Maharashtra", 426345, 9089098789, "Shreya98@gmail.com");
