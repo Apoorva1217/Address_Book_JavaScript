@@ -59,21 +59,21 @@ class AddressBook {
         let zipRegex = RegExp('^[1-9]{3}[0-9]{3}$');
         if (zipRegex.test(zipCode))
             this._zipCode = zipCode;
-        else throw "Invalid Zip Code!";
+        //else throw "Invalid Zip Code!";
     }
     get phoneNumber() { return this._phoneNumber; }
     set phoneNumber(phoneNumber) {
         let phoneRegex = RegExp('^[0-9]{10}$');
         if (phoneRegex.test(phoneNumber))
             this._phoneNumber = phoneNumber;
-        else throw "Invalid Phone Number!";
+        //else throw "Invalid Phone Number!";
     }
     get emailId() { return this._emailId; }
     set emailId(emailId) {
         let mailRegex = RegExp('^[0-9a-zA-Z]+([+_.-][0-9a-zA-Z]+)*@[a-zA-Z0-9]+([.][a-zA-Z]{2,3}){1,2}$');
         if (mailRegex.test(emailId))
             this._emailId = emailId;
-        else throw "Invalid Email ID!";
+        //else throw "Invalid Email ID!";
     }
 
     toString() {
@@ -95,5 +95,12 @@ function AddContact(firstName, lastName, address, city, state, zipCode, phoneNum
     let addresBook = new AddressBook(firstName, lastName, address, city, state, zipCode, phoneNumber, emailId);
     AddressBookArr.push(addresBook);
 }
-AddContact("Apoorva", "Rasal", "Kalwa", "Thane", "Thane", "Maharashtra", 400602, 9876543212, "Appu1@gmail.com");
+AddContact("Apoorva", "Rasal", "Kalwa", "Thane", "Maharashtra", 436278, 9876543212, "Appu1@gmail.com");
+AddContact("Shreya", "Shinde", "Ghansoli", "Navimumbai", "Maharashtra", 426345, 9089098789, "Shreya98@gmail.com");
+AddContact("Yash", "Kadam", "Bandra", "Mumbai", "Maharashtra", 456712, 9080908078, "Yash17@gmail.com");
+console.log(AddressBookArr.toString());
+
+//UC4 Ability to find existing contact person using their name and edit it
+AddressBookArr.filter(addresBook => addresBook.firstName == "Apoorva" && addresBook.lastName == "Rasal")
+    .forEach(addresBook => { addresBook.address = "Kharadi"; addresBook.city = "Pune"; addresBook.state = "Maharashtra" });
 console.log(AddressBookArr.toString());
