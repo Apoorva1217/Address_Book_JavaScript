@@ -56,20 +56,18 @@ class AddressBook {
     }
     get zipCode() { return this._zipCode; }
     set zipCode(zipCode) {
-        let zipRegex = RegExp('^[0-9]{6}$');
+        let zipRegex = RegExp('^[1-9]{3}[0-9]{3}$');
         if (zipRegex.test(zipCode))
             this._zipCode = zipCode;
-        else throw "ZipCode must have 6 digits!";
+        else throw "Invalid Zip Code!";
     }
-
     get phoneNumber() { return this._phoneNumber; }
     set phoneNumber(phoneNumber) {
-        let phoneRegex = RegExp('^[0-9]{10}');
+        let phoneRegex = RegExp('^[0-9]{10}$');
         if (phoneRegex.test(phoneNumber))
             this._phoneNumber = phoneNumber;
         else throw "Invalid Phone Number!";
     }
-
     get emailId() { return this._emailId; }
     set emailId(emailId) {
         let mailRegex = RegExp('^[0-9a-zA-Z]+([+_.-][0-9a-zA-Z]+)*@[a-zA-Z0-9]+([.][a-zA-Z]{2,3}){1,2}$');
@@ -80,13 +78,22 @@ class AddressBook {
 
     toString() {
         return "\n  FirstName    : " + this.firstName
-             + "\n  LastName     : " + this.lastName
-             + "\n  Address      : " + this.address
-             + "\n  City         : " + this.city
-             + "\n  State        : " + this.state
-             + "\n  ZipCode      : " + this.zipCode
-             + "\n  MobileNumber : " + this.mobileNumber
-             + "\n  EmailID      : " + this.emailID + "\n" +
-             "/****************************************/";
+            + "\n  LastName     : " + this.lastName
+            + "\n  Address      : " + this.address
+            + "\n  City         : " + this.city
+            + "\n  State        : " + this.state
+            + "\n  ZipCode      : " + this.zipCode
+            + "\n  PhoneNumber  : " + this.phoneNumber
+            + "\n  EmailID      : " + this.emailId + "\n" +
+            "/****************************************/";
     }
 }
+
+//UC3 Ability to create a New Address Book array and add new Contacts to it
+let AddressBookArr = new Array();
+function AddContact(firstName, lastName, address, city, state, zipCode, phoneNumber, emailId) {
+    let addresBook = new AddressBook(firstName, lastName, address, city, state, zipCode, phoneNumber, emailId);
+    AddressBookArr.push(addresBook);
+}
+AddContact("Apoorva", "Rasal", "Kalwa", "Thane", "Thane", "Maharashtra", 400602, 9876543212, "Appu1@gmail.com");
+console.log(AddressBookArr.toString());
