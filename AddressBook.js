@@ -137,3 +137,18 @@ AddressBookArr.filter(addresBook => addresBook.city.includes("Mumbai"))
     .forEach(addresBook => console.log("Person in a Particular City: " + addresBook.toString()));
 AddressBookArr.filter(addresBook => addresBook.state.includes("Maharashtra"))
     .forEach(addresBook => console.log("Person in a Particular State: " + addresBook.toString()));
+
+//UC9 Ability to view Persons by City or State
+function viewByCity(city){
+    AddressBookArr.filter(addresBook => addresBook.city==city)
+        .forEach(addresBook=>console.log(addresBook.toString()));
+}
+console.log("View Person by City:");
+viewByCity("Mumbai");
+
+function viewByState(state){
+    AddressBookArr.filter(addresBook => addresBook.state==state)
+        .forEach(addresBook=>console.log(addresBook.toString()));
+}
+console.log("View Person by State:");
+viewByState("Maharashtra");
