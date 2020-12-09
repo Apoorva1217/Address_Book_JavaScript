@@ -169,3 +169,11 @@ function countByState(state) {
     console.log("Count of Person by State : "+stateCount);
 }
 countByState("Maharashtra");
+
+//UC11 Ability to sort the entries in the address book alphabetically by Person’s name
+function sortByPersonName() {
+    AddressBookArr.sort((a, b) => a.firstName.localeCompare(b.firstName));
+    AddressBookArr.forEach(addresBook => console.log(addresBook.toString()));
+}
+console.log("Sorted by FirstName:");
+sortByPersonName();
