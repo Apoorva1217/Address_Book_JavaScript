@@ -77,14 +77,15 @@ class AddressBook {
     }
 
     toString() {
-        return "\nFirstName: " + this.firstName
-            + ", LastName: " + this.lastName
-            + ", Address: " + this.address
-            + ", City: " + this.city
-            + ", State: " + this.state
-            + ", ZipCode: " + this.zipCode
-            + ", PhoneNumber: " + this.phoneNumber
-            + ", EmailID: " + this.emailId;
+        return "\n FirstName   : " + this.firstName
+            + "\n LastName    : " + this.lastName
+            + "\n Address     : " + this.address
+            + "\n City        : " + this.city
+            + "\n State       : " + this.state
+            + "\n ZipCode     : " + this.zipCode
+            + "\n PhoneNumber : " + this.phoneNumber
+            + "\n EmailID     : " + this.emailId + "\n" +
+            "/--------------------------------------/";
     }
 }
 
@@ -134,39 +135,39 @@ console.log("\nCount of Contact: " + countofContact);
 
 //UC8 Ability to search Person in a particular City or State
 AddressBookArr.filter(addresBook => addresBook.city.includes("Mumbai"))
-    .forEach(addresBook => console.log("Person in a Particular City: " + addresBook.toString()));
+    .forEach(addresBook => console.log("\nPerson in a Particular City: " + addresBook.toString()));
 AddressBookArr.filter(addresBook => addresBook.state.includes("Maharashtra"))
-    .forEach(addresBook => console.log("Person in a Particular State: " + addresBook.toString()));
+    .forEach(addresBook => console.log("\nPerson in a Particular State: " + addresBook.toString()));
 
 //UC9 Ability to view Persons by City or State
-function viewByCity(city){
-    AddressBookArr.filter(addresBook => addresBook.city==city)
-        .forEach(addresBook=>console.log(addresBook.toString()));
+function viewByCity(city) {
+    AddressBookArr.filter(addresBook => addresBook.city == city)
+        .forEach(addresBook => console.log(addresBook.toString()));
 }
-console.log("View Person by City:");
+console.log("\nView Person by City:");
 viewByCity("Mumbai");
 
-function viewByState(state){
-    AddressBookArr.filter(addresBook => addresBook.state==state)
-        .forEach(addresBook=>console.log(addresBook.toString()));
+function viewByState(state) {
+    AddressBookArr.filter(addresBook => addresBook.state == state)
+        .forEach(addresBook => console.log(addresBook.toString()));
 }
-console.log("View Person by State:");
+console.log("\nView Person by State:");
 viewByState("Maharashtra");
 
 //UC10 Ability to get number of contact persons i.e. count by City or State
 function countByCity(city) {
-    
-    let cityCount=AddressBookArr.filter(contact => contact.city == city)
-    .reduce((countOfContact) => countOfContact = countOfContact+ 1, 0);
-    console.log("Count of Person by City : "+cityCount);
+
+    let cityCount = AddressBookArr.filter(contact => contact.city == city)
+        .reduce((countOfContact) => countOfContact = countOfContact + 1, 0);
+    console.log("\nCount of Person by City : " + cityCount);
 }
 countByCity("Mumbai");
 
 function countByState(state) {
-    
-    let stateCount=AddressBookArr.filter(contact => contact.state == state)
-    .reduce((countOfContact) => countOfContact = countOfContact+ 1, 0);
-    console.log("Count of Person by State : "+stateCount);
+
+    let stateCount = AddressBookArr.filter(contact => contact.state == state)
+        .reduce((countOfContact) => countOfContact = countOfContact + 1, 0);
+    console.log("\nCount of Person by State : " + stateCount);
 }
 countByState("Maharashtra");
 
@@ -175,5 +176,27 @@ function sortByPersonName() {
     AddressBookArr.sort((a, b) => a.firstName.localeCompare(b.firstName));
     AddressBookArr.forEach(addresBook => console.log(addresBook.toString()));
 }
-console.log("Sorted by FirstName:");
+console.log("\nSorted by FirstName:");
 sortByPersonName();
+
+//UC12 Ability to sort the entries in the address book by City, State, or Zip
+function sortByCity() {
+    AddressBookArr.sort((a, b) => a.city.localeCompare(b.city));
+    AddressBookArr.forEach(addresBook => console.log(addresBook.toString()));
+}
+console.log("\nSorted by City:");
+sortByCity();
+
+function sortByState() {
+    AddressBookArr.sort((a, b) => a.state.localeCompare(b.state));
+    AddressBookArr.forEach(addresBook => console.log(addresBook.toString()));
+}
+console.log("\nSorted by State:");
+sortByState();
+
+function sortByZipCode() {
+    AddressBookArr.sort((a, b) => a.zipCode == b.zipCode);
+    AddressBookArr.forEach(addresBook => console.log(addresBook.toString()));
+}
+console.log("\nSorted by ZipCode:");
+sortByZipCode();
