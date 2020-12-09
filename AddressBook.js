@@ -152,3 +152,20 @@ function viewByState(state){
 }
 console.log("View Person by State:");
 viewByState("Maharashtra");
+
+//UC10 Ability to get number of contact persons i.e. count by City or State
+function countByCity(city) {
+    
+    let cityCount=AddressBookArr.filter(contact => contact.city == city)
+    .reduce((countOfContact) => countOfContact = countOfContact+ 1, 0);
+    console.log("Count of Person by City : "+cityCount);
+}
+countByCity("Mumbai");
+
+function countByState(state) {
+    
+    let stateCount=AddressBookArr.filter(contact => contact.state == state)
+    .reduce((countOfContact) => countOfContact = countOfContact+ 1, 0);
+    console.log("Count of Person by State : "+stateCount);
+}
+countByState("Maharashtra");
