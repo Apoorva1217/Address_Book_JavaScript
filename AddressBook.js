@@ -59,21 +59,21 @@ class AddressBook {
         let zipRegex = RegExp('^[1-9]{3}[0-9]{3}$');
         if (zipRegex.test(zipCode))
             this._zipCode = zipCode;
-        //else throw "Invalid Zip Code!";
+        else throw "Invalid Zip Code!";
     }
     get phoneNumber() { return this._phoneNumber; }
     set phoneNumber(phoneNumber) {
-        let phoneRegex = RegExp('^[0-9]{10}$');
+        let phoneRegex = RegExp('^[7-9]{1}[0-9]{9}$');
         if (phoneRegex.test(phoneNumber))
             this._phoneNumber = phoneNumber;
-        //else throw "Invalid Phone Number!";
+        else throw "Invalid Phone Number!";
     }
     get emailId() { return this._emailId; }
     set emailId(emailId) {
         let mailRegex = RegExp('^[0-9a-zA-Z]+([+_.-][0-9a-zA-Z]+)*@[a-zA-Z0-9]+([.][a-zA-Z]{2,3}){1,2}$');
         if (mailRegex.test(emailId))
             this._emailId = emailId;
-        //else throw "Invalid Email ID!";
+        else throw "Invalid Email ID!";
     }
 
     toString() {
@@ -104,8 +104,8 @@ function AddContact(firstName, lastName, address, city, state, zipCode, phoneNum
     }
 }
 AddContact("Apoorva", "Rasal", "Kalwa", "Thane", "Maharashtra", 436278, 9876543212, "Appu1@gmail.com");
-AddContact("Shreya", "Shinde", "Ghansoli", "Navimumbai", "Maharashtra", 426345, 9089098789, "Shreya98@gmail.com");
-AddContact("Yash", "Kadam", "Bandra", "Mumbai", "Maharashtra", 456712, 9080908078, "Yash17@gmail.com");
+AddContact("Yash", "Kadam", "Bandra", "Mumbai", "Maharashtra", 411212, 9080908078, "Yash17@gmail.com");
+AddContact("Shreya", "Shinde", "Ghansoli", "Navimumbai", "Maharashtra", 421345, 9089098789, "Shreya98@gmail.com");
 console.log("Contacts are Added...");
 console.log(AddressBookArr.toString());
 
@@ -113,7 +113,7 @@ console.log(AddressBookArr.toString());
 AddressBookArr.filter(addresBook => addresBook.firstName == "Apoorva" && addresBook.lastName == "Rasal")
     .forEach(addresBook => { addresBook.address = "Kharadi"; addresBook.city = "Pune"; addresBook.state = "Maharashtra" });
 console.log("\nEdited Contact...");
-console.log(AddressBookArr.toString());
+AddressBookArr.forEach(addresBook => console.log(addresBook.toString()));
 
 //UC5 Ability to find a person with name delete it from the array
 for (let index = 0; index < AddressBookArr.length; index++) {
@@ -131,3 +131,9 @@ let countofContact = AddressBookArr.reduce(((countofContact) => {
     return countofContact;
 }), 0);
 console.log("\nCount of Contact: " + countofContact);
+
+//UC8 Ability to search Person in a particular City or State
+AddressBookArr.filter(addresBook => addresBook.city.includes("Mumbai"))
+    .forEach(addresBook => console.log("Person in a Particular City: " + addresBook.toString()));
+AddressBookArr.filter(addresBook => addresBook.state.includes("Maharashtra"))
+    .forEach(addresBook => console.log("Person in a Particular State: " + addresBook.toString()));
